@@ -7,7 +7,7 @@ import racingcar.domain.Race;
 public class RaceService {
 
     public Race createRace(List<String> carsName, int attempts) {
-        List<Car> cars = carsName.stream().map(name -> new Car(name)).toList();
+        List<Car> cars = carsName.stream().map(Car::new).toList();
 
         return new Race(cars, attempts);
     }
