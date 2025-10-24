@@ -9,5 +9,6 @@ public class Application {
 
         List<String> carNames = inputView.readCarNames();
         int attemptCount = inputView.readAttemptCount();
+        inputView.close();
     }
 }

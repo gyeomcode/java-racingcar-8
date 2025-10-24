@@ -44,6 +44,10 @@ public class InputView {
         }
     }
 
+    public void close() {
+        Console.close();
+    }
+
     private void validateCarNames(List<String> carNames) {
         if (carNames.isEmpty() || carNames.stream()
                 .anyMatch(carName -> carName.length() > CAR_NAME_MAX_LENGTH || carName.isEmpty())) {
