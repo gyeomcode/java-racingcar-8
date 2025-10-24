@@ -10,4 +10,12 @@ public class Race {
         this.cars = cars;
         this.attempts = attempts;
     }
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
