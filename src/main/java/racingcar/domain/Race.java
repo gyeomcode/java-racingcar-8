@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Race {
@@ -12,6 +14,9 @@ public class Race {
     }
 
     public void moveCars() {
+        cars.stream().forEach(car -> {
+            int pickNumber = Randoms.pickNumberInRange(0, 9);
+        });
     }
 
     public int getAttempts() {
