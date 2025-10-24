@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import racingcar.domain.Race;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 
@@ -13,6 +14,7 @@ public class Application {
         int attemptCount = inputView.readAttemptCount();
         inputView.close();
 
-        raceService.createRace(carNames, attemptCount);
+        Race race = raceService.createRace(carNames, attemptCount);
+        raceService.startRace(race);
     }
 }

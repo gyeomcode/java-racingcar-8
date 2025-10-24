@@ -11,6 +11,9 @@ public class Race {
         this.attempts = attempts;
     }
 
+    public void moveCars() {
+    }
+
     public int getAttempts() {
         return attempts;
     }
