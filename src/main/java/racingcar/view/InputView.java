@@ -19,7 +19,7 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
 
-        return Integer.parseInt(input);
+        return parseAttemptCount(input);
     }
 
     public List<String> parseCarNames(String input) {
@@ -28,6 +28,20 @@ public class InputView {
         validateCarNames(carNames);
 
         return carNames;
+    }
+
+    public int parseAttemptCount(String input) {
+        try {
+            int value = Integer.parseInt(input);
+
+            if (value < 0) {
+                throw new IllegalArgumentException("시도할 횟수는 0 이상이어야 합니다.");
+            }
+
+            return value;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자를 입력해야 합니다.");
+        }
     }
 
     private void validateCarNames(List<String> carNames) {
