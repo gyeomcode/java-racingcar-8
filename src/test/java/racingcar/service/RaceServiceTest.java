@@ -39,7 +39,7 @@ class RaceServiceTest {
         race.moveCars();
 
         assertThat(race.getCars().get(0).getDistance()).isEqualTo(1);
-        assertThat(race.getCars().get(0).getDistance()).isEqualTo(1);
+        assertThat(race.getCars().get(1).getDistance()).isEqualTo(1);
     }
 
     @Test
@@ -51,6 +51,18 @@ class RaceServiceTest {
         race.moveCars();
 
         assertThat(race.getCars().get(0).getDistance()).isEqualTo(0);
-        assertThat(race.getCars().get(0).getDistance()).isEqualTo(0);
+        assertThat(race.getCars().get(1).getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("이동한 결과 출력한다.")
+    void 이동결과_출력() {
+        List<Car> cars = List.of(new Car("pobi"), new Car("woni"));
+        Race race = new Race(cars, 1, new AlwaysMoveStrategy());
+
+        race.moveCars();
+
+        assertThat(race.getCars().get(0).toString()).isEqualTo("pobi : -");
+        assertThat(race.getCars().get(1).toString()).isEqualTo("woni : -");
     }
 }
