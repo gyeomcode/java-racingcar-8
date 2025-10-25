@@ -14,12 +14,12 @@ public class RaceService {
         return new Race(cars, attempts, moveStrategy);
     }
 
-    public void startRace(Race race) {
+    public void startRace(Race race, RoundCallback callback) {
         System.out.println("\n실행 결과");
 
         IntStream.range(0, race.getAttempts()).forEach(i -> {
             race.moveCars();
-            race.printMoveStatus();
+            callback.onRoundEnd(race.getCars());
         });
     }
 }

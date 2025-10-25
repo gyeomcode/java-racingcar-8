@@ -23,11 +23,6 @@ public class Race {
         });
     }
 
-    public void printMoveStatus() {
-        cars.forEach(System.out::println);
-        System.out.println();
-    }
-
     public List<Car> getWinners() {
         int maxDistance = getMaxDistance();
 
