@@ -24,9 +24,7 @@ public class Race {
     }
 
     public void printMoveStatus() {
-        cars.forEach(car -> {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
-        });
+        cars.forEach(System.out::println);
         System.out.println();
     }
 
