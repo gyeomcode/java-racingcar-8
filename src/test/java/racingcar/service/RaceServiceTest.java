@@ -3,6 +3,7 @@ package racingcar.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -55,14 +56,20 @@ class RaceServiceTest {
     }
 
     @Test
-    @DisplayName("이동한 결과 출력한다.")
-    void 이동결과_출력() {
-        List<Car> cars = List.of(new Car("pobi"), new Car("woni"));
-        Race race = new Race(cars, 1, new AlwaysMoveStrategy());
+    @DisplayName("경주가 끝나면 자동차들의 이동 결과와 우승자가 올바르게 계산된다.")
+    void 경주_완료() {
+        int attempts = 2;
+        List<Car> cars = List.of(new Car("pobi"), new Car("woni"), new Car("yordle"));
+        Race race = new Race(cars, attempts, new RandomMoveStrategy());
 
-        race.moveCars();
+        IntStream.range(0, attempts).forEach(i -> {
+            race.getCars().get(0).move();
+            race.getCars().get(1).move();
+        });
 
-        assertThat(race.getCars().get(0).toString()).isEqualTo("pobi : -");
-        assertThat(race.getCars().get(1).toString()).isEqualTo("woni : -");
+        assertThat(race.getCars().get(0).toString()).isEqualTo("pobi : --");
+        assertThat(race.getCars().get(1).toString()).isEqualTo("woni : --");
+        assertThat(race.getMaxDistance()).isEqualTo(2);
+        assertThat(race.getWinners()).containsExactly(race.getCars().get(0), race.getCars().get(1));
     }
 }

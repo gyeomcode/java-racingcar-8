@@ -16,7 +16,7 @@ public class RaceService {
 
     public void startRace(Race race) {
         System.out.println("\n실행 결과");
-        
+
         IntStream.range(0, race.getAttempts()).forEach(i -> {
             race.moveCars();
             race.printMoveStatus();

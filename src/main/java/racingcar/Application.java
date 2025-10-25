@@ -17,5 +17,7 @@ public class Application {
 
         Race race = raceService.createRace(carNames, attemptCount, new RandomMoveStrategy());
         raceService.startRace(race);
+
+        race.getWinners();
     }
 }
