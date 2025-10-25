@@ -19,9 +19,7 @@ public class Application {
         inputView.close();
 
         Race race = raceService.createRace(carNames, attemptCount, new RandomMoveStrategy());
-        raceService.startRace(race, (cars) -> {
-            outputView.printMoveStatus(cars);
-        });
+        raceService.startRace(race, outputView::printMoveStatus);
 
         List<Car> winners = race.getWinners();
         outputView.printWinnerNames(winners);
