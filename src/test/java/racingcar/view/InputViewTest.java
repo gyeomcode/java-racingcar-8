@@ -32,7 +32,7 @@ class InputViewTest {
     @ValueSource(strings = {"", "-1", "/", "abc"})
     @DisplayName("올바르지 않은 시도할 횟수는 예외가 발생한다.")
     void 시도할횟수_예외(String input) {
-        assertThatThrownBy(() -> inputView.parseAttemptCount(input))
+        assertThatThrownBy(() -> inputView.parseAttempts(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

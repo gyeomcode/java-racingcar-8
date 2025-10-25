@@ -15,11 +15,11 @@ public class InputView {
         return parseCarNames(input);
     }
 
-    public int readAttemptCount() {
+    public int readAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
 
-        return parseAttemptCount(input);
+        return parseAttempts(input);
     }
 
     public List<String> parseCarNames(String input) {
@@ -30,7 +30,7 @@ public class InputView {
         return carNames;
     }
 
-    public int parseAttemptCount(String input) {
+    public int parseAttempts(String input) {
         try {
             int value = Integer.parseInt(input);
 

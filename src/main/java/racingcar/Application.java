@@ -15,10 +15,10 @@ public class Application {
         RaceService raceService = new RaceService();
 
         List<String> carNames = inputView.readCarNames();
-        int attemptCount = inputView.readAttemptCount();
+        int attempts = inputView.readAttempts();
         inputView.close();
 
-        Race race = raceService.createRace(carNames, attemptCount, new RandomMoveStrategy());
+        Race race = raceService.createRace(carNames, attempts, new RandomMoveStrategy());
         raceService.startRace(race, outputView::printMoveStatus);
 
         List<Car> winners = race.getWinners();
