@@ -16,7 +16,7 @@ public class Race {
     }
 
     public void moveCars() {
-        cars.stream().forEach(car -> {
+        cars.forEach(car -> {
             if (moveStrategy.movable()) {
                 car.move();
             }
@@ -24,7 +24,7 @@ public class Race {
     }
 
     public void printMoveStatus() {
-        cars.stream().forEach(car -> {
+        cars.forEach(car -> {
             System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
         });
         System.out.println();
