@@ -23,6 +23,13 @@ public class Race {
         });
     }
 
+    public void printMoveStatus() {
+        cars.stream().forEach(car -> {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+        });
+        System.out.println();
+    }
+
     public int getAttempts() {
         return attempts;
     }
