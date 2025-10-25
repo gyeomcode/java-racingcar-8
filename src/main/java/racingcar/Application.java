@@ -1,27 +1,15 @@
 package racingcar;
 
-import java.util.List;
-import racingcar.domain.Car;
+import racingcar.controller.GameController;
 import racingcar.domain.Race;
-import racingcar.service.RaceService;
-import racingcar.strategy.RandomMoveStrategy;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.dto.GameRequest;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        RaceService raceService = new RaceService();
+        GameController gameController = new GameController();
 
-        List<String> carNames = inputView.readCarNames();
-        int attempts = inputView.readAttempts();
-        inputView.close();
-
-        Race race = raceService.createRace(carNames, attempts, new RandomMoveStrategy());
-        raceService.startRace(race, outputView::printMoveStatus);
-
-        List<Car> winners = race.getWinners();
-        outputView.printWinnerNames(winners);
+        GameRequest gameRequest = gameController.readInput();
+        Race race = gameController.play(gameRequest);
+        gameController.showResult(race);
     }
 }
