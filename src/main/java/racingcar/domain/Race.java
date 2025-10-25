@@ -5,9 +5,9 @@ import java.util.List;
 import racingcar.strategy.MoveStrategy;
 
 public class Race {
-    private List<Car> cars;
-    private int attempts;
-    private MoveStrategy moveStrategy;
+    private final List<Car> cars;
+    private final int attempts;
+    private final MoveStrategy moveStrategy;
 
     public Race(List<Car> cars, int attempts, MoveStrategy moveStrategy) {
         this.cars = cars;
